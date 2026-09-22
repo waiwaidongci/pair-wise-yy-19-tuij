@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>岩芯薄片显微照片索引台</title>
+  <title>岩芯薄片视域拼接与孔隙率核验台</title>
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <main class="shell">
     <header class="mast">
       <div>
-        <p>Petrographic Slide Index</p>
-        <h1>岩芯薄片显微照片索引台</h1>
+        <p>Petrographic Stitching &amp; Porosity Bench</p>
+        <h1>岩芯薄片视域拼接与孔隙率核验台</h1>
       </div>
       <button id="exportBtn" type="button">导出观察清单</button>
     </header>
@@ -19,7 +19,7 @@
     <section class="layout">
       <form id="sampleForm" class="editor">
         <h2>样本录入</h2>
-        <label>显微照片<input id="photoInput" type="file" accept="image/*"></label>
+        <label>首张显微照片<input id="photoInput" type="file" accept="image/*"></label>
         <label>样本编号<input name="code" required placeholder="BX-17-03"></label>
         <label>采样地点<input name="location" placeholder="剖面东侧第二层"></label>
         <div class="pair">
@@ -32,6 +32,7 @@
             </select>
           </label>
         </div>
+        <label>标尺<input name="scale" placeholder="2.5 µm/px"></label>
         <label>主要矿物<input name="minerals" placeholder="石英、斜长石、黑云母"></label>
         <label>颗粒结构<input name="texture" placeholder="半自形粒状、碎裂结构"></label>
         <label>老师批注<textarea name="comment" rows="4" placeholder="记录鉴定依据或疑点"></textarea></label>
@@ -51,12 +52,20 @@
         <div id="sampleGrid" class="sample-grid"></div>
       </section>
 
-      <aside class="compare">
-        <h2>并排对比</h2>
-        <div id="comparePane" class="compare-pane"></div>
+      <aside class="side">
+        <section id="workbench" class="workbench"></section>
+        <section class="compare">
+          <h2>并排对比</h2>
+          <div id="comparePane" class="compare-pane"></div>
+        </section>
       </aside>
     </section>
   </main>
+
+  <input id="replacePhotoInput" type="file" accept="image/*" hidden>
+  <script src="./js/store.js"></script>
+  <script src="./js/rules.js"></script>
+  <script src="./js/samples.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>
